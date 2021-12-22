@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 
 const CookieStandAdmin = (props) => {
-    const { counter, formHandler, cookiesList } = props
+    const { counter, formHandler, cookiesList , totalsOfTotals} = props
     return (
         <>
             <Head>
