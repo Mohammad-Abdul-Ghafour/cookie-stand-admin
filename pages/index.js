@@ -18,7 +18,7 @@ const Home = () => {
      return hour;
   }
 
-  const formHandler = (e) => {
+  const formHandler = (e)=> {
     e.preventDefault();
     let minCustomer = e.target.min.value;
     let maxCustomer = e.target.max.value;
@@ -34,6 +34,7 @@ const Home = () => {
       hourlyArr: hourlyArr,
     }
     setCookiesList([...cookiesList, cookie])
+    console.log(cookiesList);
     setCounter(counter+1)
   }
   return (
