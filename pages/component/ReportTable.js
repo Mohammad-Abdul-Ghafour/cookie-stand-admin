@@ -40,7 +40,6 @@ const ReportTable = (props) => {
                                     cookie.hourlyArr.map((hour, idx) => {
                                         totals += hour
                                         totalsOfTotals[idx] += hour
-                                        // totalsOfTotals.length < cookiesList.length ? totalsOfTotals.push(hour):totalsOfTotals.push(totals)
                                         return (
                                             <td key={idx} className='border border-gray-600'>{hour}</td>
                                         )
@@ -62,7 +61,7 @@ const ReportTable = (props) => {
                 <tfoot>
                     <tr className='bg-emerald-500'>
                         <td className='border border-gray-600'>Totals of Totals</td>
-                        {
+                        { 
                             totalsOfTotals.map((element, index) => {
                                 footTotal += element
                                 console.log(222222,element);
