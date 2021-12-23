@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import CookieStandAdmin from './component/CookieStandAdmin';
 import { hours } from '../data';
 import LoginForm from './component/logInForm';
@@ -19,7 +19,17 @@ const Home = () => {
   const config = {
     headers: { "Authorization": `Bearer ${token}` }
   }
+  
+  useEffect(() => {
+    if(token){
+      axios.get(creatUrl, config).then(data => {
+        console.log(55555, data);
+        setCookiesList(data.data)
+      });
+    }
+  },[token])
 
+   
   const getRandomIntInclusive = (min, max) => {
     let min1 = Math.ceil(min);
     let max1 = Math.floor(max);
@@ -43,39 +53,44 @@ const Home = () => {
       hourlyArr.push(hourlySale)
     }
     console.log(hourlyArr)
-    let cookie = {
-      location: e.target.location.value,
-      hourlyArr: hourlyArr,
-    }
-    setCookiesList([...cookiesList, cookie])
-    console.log(cookiesList);
-    setCounter(counter + 1)
+    // let cookie = {
+    //   location: e.target.location.value,
+    //   hourlyArr: hourlyArr,
+    // }
     let decodedPayload = jsonwebtoken.decode(token)
-    console.log(decodedPayload);
     let savedData = {
-      location: cookie.location,
-      hourly_sales: cookie.hourlyArr,
+      location: e.target.location.value,
+      hourly_sales: hourlyArr,
       minimum_customers_per_hour: minCustomer,
       maximum_customers_per_hour: maxCustomer,
       average_cookies_per_sale: avgSale,
-      owner_id:decodedPayload.user_id
+      owner_id: decodedPayload.user_id
     }
+    setCookiesList([...cookiesList, savedData])
+    console.log(cookiesList);
+    setCounter(counter + 1)
+    console.log(decodedPayload);
 
-    axios.post(creatUrl,savedData, config)
+    axios.post(creatUrl, savedData, config)
   }
 
   const logInHandler = async (e, credintials) => {
     e.preventDefault();
-    axios.post(tokenUrl, credintials).then(data => {
+    await axios.post(tokenUrl, credintials).then(data => {
       setToken(data.data.access)
-    });
-    console.log(token)
+   
+      // config.headers.Authorization = `Bearer ${data.data.access}`
+      // console.log(config);
+      // x(creatUrl, config)
+      
+      // setCookiesList([])
+    })
   }
 
   if (!token) return <LoginForm logInHandler={logInHandler} />
   return (
 
-    <CookieStandAdmin counter={counter} formHandler={formHandler} cookiesList={cookiesList} token={token} />
+    <CookieStandAdmin counter={counter} formHandler={formHandler} cookiesList={cookiesList} token={token} config={config} />
   )
 }
 
