@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 
 const CookieStandAdmin = (props) => {
-    const { counter, formHandler, cookiesList , totalsOfTotals} = props
+    const { counter, formHandler, cookiesList , config} = props
     return (
         <>
             <Head>
@@ -14,7 +14,7 @@ const CookieStandAdmin = (props) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <Main formHandler={formHandler} cookiesList={cookiesList} />
+            <Main formHandler={formHandler} cookiesList={cookiesList} config={config} />
             <Footer counter={counter} />
         </>
     )
