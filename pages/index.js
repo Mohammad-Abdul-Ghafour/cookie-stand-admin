@@ -1,9 +1,11 @@
 import { useState , useEffect } from 'react';
-import CookieStandAdmin from '../component/CookieStandAdmin';
+import CookieStandAdmin from '../components/CookieStandAdmin';
 import { hours } from '../data';
-import LoginForm from '../component/logInForm';
+import LoginForm from '../components/logInForm';
 import axios from 'axios';
 import jsonwebtoken from 'jsonwebtoken';
+
+
 
 // let avgSale = e.target.avg.value;
 const baseUrl = process.env.NEXT_PUBLIC_HOST;
