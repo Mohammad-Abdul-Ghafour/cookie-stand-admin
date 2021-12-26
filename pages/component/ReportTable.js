@@ -10,7 +10,7 @@ const ReportTable = (props) => {
     let totalsOfTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let totals = 0
     let footTotal = 0
-    const baseUrl = 'http://127.0.0.1:8000/';
+    const baseUrl = process.env.NEXT_PUBLIC_HOST;
     const deleteUrl = baseUrl + 'api/v1/cookie_stands/';
 
     const deleteHandler = (id) => {
