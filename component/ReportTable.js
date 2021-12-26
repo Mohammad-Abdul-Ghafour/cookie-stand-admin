@@ -1,5 +1,5 @@
 import React from 'react';
-import { hours } from '../../data';
+import { hours } from '../data';
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
