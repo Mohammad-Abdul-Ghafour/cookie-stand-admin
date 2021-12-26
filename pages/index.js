@@ -6,7 +6,7 @@ import axios from 'axios';
 import jsonwebtoken from 'jsonwebtoken';
 
 // let avgSale = e.target.avg.value;
-const baseUrl = 'http://127.0.0.1:8000/';
+const baseUrl = process.env.NEXT_PUBLIC_HOST;
 const tokenUrl = baseUrl + 'api/token/';
 const creatUrl = baseUrl + 'api/v1/cookie_stands/';
 
