@@ -1,7 +1,7 @@
 import { useState , useEffect } from 'react';
-import CookieStandAdmin from './component/CookieStandAdmin';
+import CookieStandAdmin from '../component/CookieStandAdmin';
 import { hours } from '../data';
-import LoginForm from './component/logInForm';
+import LoginForm from '../component/logInForm';
 import axios from 'axios';
 import jsonwebtoken from 'jsonwebtoken';
 
